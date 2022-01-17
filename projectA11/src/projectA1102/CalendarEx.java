@@ -33,7 +33,7 @@ public class CalendarEx {
 		System.out.print(hour + "시 " + minute + "분 " + second + "초 " + milisecond + "밀리초");
 	}
 	
-	public static void Main(String[] args) {
+	public static void main(String[] args) {
 		Calendar now = Calendar.getInstance();
 		printCalendar("현재 ", now);
 		
