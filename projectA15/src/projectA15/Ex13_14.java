@@ -37,7 +37,7 @@ class Cook implements Runnable{
 		this.table = table;}
 	public void run() {
 		while(true) {
-			int idx = (int)(Math.random()*table.dishNum())
+			int idx = (int)(Math.random()*table.dishNum());
 			table.add(table.dishNames[idx]);
 			try {
 				Thread.sleep(100);
@@ -70,9 +70,15 @@ class Table {
 }
 class Ex13_14 {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
+		Table table = new Table();
 		
+		new Thread(new Cook(table), "COOK1").start();
+		new Thread(new Customer(table, "donut"), "CUST1").start();
+		new Thread(new Customer(table, "burger"), "CUST2").start();
 
+		Thread.sleep(2000);
+		System.exit(0);
 	}
 
 }
